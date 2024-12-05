@@ -2,7 +2,7 @@ import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Login from './Welcome'
+import Login from './Login'
 function App() {
   return (
     <Router>
