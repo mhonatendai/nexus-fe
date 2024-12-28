@@ -9,7 +9,7 @@ const App = () => {
         <div className="auth-wrapper">
           <div className="auth-inner">
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
