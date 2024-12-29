@@ -10,10 +10,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-font-size: 100vh;
+  min-height: 100vh;
   background: seagreen;
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
+  background: url(./assets/back.png) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 h1,h2,h3,h4,h5,h6,label,span {

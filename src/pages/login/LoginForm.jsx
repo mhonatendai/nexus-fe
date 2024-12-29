@@ -7,7 +7,7 @@ const LoginForm = () => {
     return (
         <div className='wrapper'>
             <form action="">
-                <h1>Login</h1>
+                <h1>Sign in</h1>
                 <div className="input-box">
                     <input type="text" placeholder='Username' required/>
                     <FaUser className="icon"/>
