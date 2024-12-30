@@ -14,7 +14,6 @@ const LoginForm = () => {
         e.preventDefault();
         
         try {
-        console.log("Username: {}",username);
 
         //   const response = await axios.post('http://localhost:8097/login', {
         //     username: username,
@@ -23,14 +22,13 @@ const LoginForm = () => {
     
         //   console.log(response.data);
         } catch (error) {
-          // Handle errors
           console.error('Error submitting form:', error);
         }
       };
 
     return (
         <div className='wrapper'>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <h1>Sign in</h1>
                 <div className="input-box">
 
