@@ -15,12 +15,12 @@ const LoginForm = () => {
         
         try {
 
-        //   const response = await axios.post('http://localhost:8097/login', {
-        //     username: username,
-        //     password: password
-        //   });
+          const response = await axios.post('http://localhost:8097/employee/login', {
+            username: username,
+            password: password
+          });
     
-        //   console.log(response.data);
+          console.log(response.data);
         } catch (error) {
           console.error('Error submitting form:', error);
         }
