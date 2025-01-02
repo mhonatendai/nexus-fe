@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Register.css'
+import './Register.css';
+import { Link } from 'react-router-dom';
+
 
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
@@ -61,9 +63,12 @@ const RegisterForm = () => {
                     </button>
                     {error && <p>{error}</p>}
                 </div>
-                <p className="forgot-password text-right">
-                    Already registered <a href="/login">sign in?</a>
-                </p>
+                <div className="login-grid">
+                    <button className="btn btn-primary">
+                        <Link to="/login">Not new? Log in</Link>
+                    </button>
+                    {error && <p>{error}</p>}
+                </div>
             </form>
         </div>
     );
