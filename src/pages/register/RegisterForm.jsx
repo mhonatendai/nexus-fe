@@ -7,16 +7,17 @@ import { Link } from 'react-router-dom';
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const registerDTO = { email, password };
+        const registerDTO = { firstName, lastName,email, password };
 
         try {
             await axios.post('/register', registerDTO);
-            //redirect to login)
         } catch (err) {
             setError('Registration failed. Please try again.');
             console.error(err);
