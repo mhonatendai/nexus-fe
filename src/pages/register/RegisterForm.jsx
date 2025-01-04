@@ -5,19 +5,22 @@ import { Link } from 'react-router-dom';
 
 
 const RegisterForm = () => {
-    const [email, setEmail] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [middleName, setMiddleName] = useState('');
+
     const [error, setError] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const registerDTO = { firstName, lastName,email, password };
+        const registerDTO = { firstName, lastName,emailAddress, phoneNumber, middleName, password };
 
         try {
-            await axios.post('/register', registerDTO);
+            await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
         } catch (err) {
             setError('Registration failed. Please try again.');
             console.error(err);
@@ -33,18 +36,47 @@ const RegisterForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="First name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
                     />
                 </div>
                 <div className="input-box">
-                    <input type="text" className="form-control" placeholder="Last name" />
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Middle name"
+                        value={middleName}
+                        onChange={(e) => setMiddleName(e.target.value)}
+                    />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Last name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                    />
                 </div>
                 <div className="input-box">
                     <input
                         type="email"
                         className="form-control"
                         placeholder="Enter email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={emailAddress}
+                        onChange={(e) => setEmailAddress(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter phone number"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                         required
                     />
                 </div>
@@ -68,7 +100,6 @@ const RegisterForm = () => {
                     <button className="btn btn-primary">
                         <Link to="/login">Not new? Log in</Link>
                     </button>
-                    {error && <p>{error}</p>}
                 </div>
             </form>
         </div>
