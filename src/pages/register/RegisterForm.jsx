@@ -11,6 +11,8 @@ const RegisterForm = () => {
     const [lastName, setLastName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [middleName, setMiddleName] = useState('');
+    const [isRegistered, setIsRegistered] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
 
     const [error, setError] = useState('');
 
@@ -20,7 +22,9 @@ const RegisterForm = () => {
         const registerDTO = { firstName, lastName,emailAddress, phoneNumber, middleName, password };
 
         try {
-            await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
+            const response = await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
+            setSuccessMessage('Employee registration successful!');
+            setIsRegistered(true);
         } catch (err) {
             setError('Registration failed. Please try again.');
             console.error(err);
@@ -29,7 +33,11 @@ const RegisterForm = () => {
 
     return (
         <div className='wrapper'>
-            <form onSubmit={handleSubmit}>
+            {error && <p>{error}</p>}
+            {isRegistered ? (
+                <p>{successMessage}</p>
+            ) :
+            (<form onSubmit={handleSubmit}>
                 <h3>Welcome to Imperial Technologies</h3>
                 <div className="input-box">
                     <input
@@ -94,7 +102,6 @@ const RegisterForm = () => {
                     <button type="submit" className="btn btn-primary">
                         Register
                     </button>
-                    {error && <p>{error}</p>}
                 </div>
                 <div className="login-grid">
                     <button className="btn btn-primary">
@@ -102,6 +109,7 @@ const RegisterForm = () => {
                     </button>
                 </div>
             </form>
+            )}
         </div>
     );
 };
