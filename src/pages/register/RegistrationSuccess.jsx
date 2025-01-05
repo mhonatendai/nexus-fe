@@ -5,6 +5,7 @@ const RegistrationSuccess = ({ message }) => {
         <div>
             <h2>Success!</h2>
             <p>{message}</p>
+            <pre>{JSON.stringify(response, null, 2)}</pre>
         </div>
     );
 };

@@ -14,6 +14,7 @@ const RegisterForm = () => {
     const [middleName, setMiddleName] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
+    const [response, setResponse] = useState(null); 
 
     const [error, setError] = useState('');
 
@@ -24,8 +25,9 @@ const RegisterForm = () => {
 
         try {
             const response = await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
-            setSuccessMessage('Employee registration successful!');
+            setSuccessMessage('Registration successful! Welcome!');
             setIsRegistered(true);
+            setResponse(responseData);
         } catch (err) {
             setError('Registration failed. Please try again.');
             console.error(err);
@@ -36,7 +38,7 @@ const RegisterForm = () => {
         <div className='wrapper'>
             {error && <p>{error}</p>}
             {isRegistered ? (
-                <RegistrationSuccess message={successMessage} />
+                <RegistrationSuccess message={successMessage} response={response} />
             ) :
             (<form onSubmit={handleSubmit}>
                 <h3>Welcome to Imperial Technologies</h3>
