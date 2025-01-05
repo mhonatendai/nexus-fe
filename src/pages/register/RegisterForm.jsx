@@ -24,7 +24,7 @@ const RegisterForm = () => {
         const registerDTO = { firstName, lastName,emailAddress, phoneNumber, middleName, password };
 
         try {
-            const response = await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
+            const responseData = await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
             setSuccessMessage('Registration successful! Welcome!');
             setIsRegistered(true);
             setResponse(responseData);

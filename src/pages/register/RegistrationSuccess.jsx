@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RegistrationSuccess = ({ message }) => {
+const RegistrationSuccess = ({ message, response }) => {
     return (
         <div>
             <h2>Success!</h2>
