@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
 import { Link } from 'react-router-dom';
+import RegistrationSuccess from './RegistrationSuccess';
 
 
 const RegisterForm = () => {
@@ -35,7 +36,7 @@ const RegisterForm = () => {
         <div className='wrapper'>
             {error && <p>{error}</p>}
             {isRegistered ? (
-                <p>{successMessage}</p>
+                <RegistrationSuccess message={successMessage} />
             ) :
             (<form onSubmit={handleSubmit}>
                 <h3>Welcome to Imperial Technologies</h3>
