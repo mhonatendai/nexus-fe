@@ -19,9 +19,7 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const registerDTO = { firstName, lastName, emailAddress, phoneNumber, middleName, password };
-
         try {
             const responseData = await axios.post('http://localhost:8097/nexus-core/api/employee/register', registerDTO);
             setSuccessMessage('Registration successful! Welcome!');
@@ -33,6 +31,19 @@ const RegisterForm = () => {
         }
     };
 
+    const handleClear = () => {
+        //To be optimized to use a setFormData sort of implementation.
+        setFirstName('');
+        setLastName('');
+        setEmailAddress('');
+        setIsRegistered(false);
+        setMiddleName('');
+        setPassword('');
+        setPassword('');
+        setPhoneNumber('');
+    };
+
+
     return (
         <div className='wrapper'>
             {error && <p>{error}</p>}
@@ -41,25 +52,28 @@ const RegisterForm = () => {
             ) :
                 (<form onSubmit={handleSubmit}>
                     <h3>Welcome to Imperial Technologies</h3>
-                    <div className="input-box">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="First name"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            required
-                        />
+                    <div className="side-by-side-container">
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="First name"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Middle name"
+                                value={middleName}
+                                onChange={(e) => setMiddleName(e.target.value)}
+                            />
+                        </div>
                     </div>
-                    <div className="input-box">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Middle name"
-                            value={middleName}
-                            onChange={(e) => setMiddleName(e.target.value)}
-                        />
-                    </div>
+
                     <div className="input-box">
                         <input
                             type="text"
@@ -104,7 +118,7 @@ const RegisterForm = () => {
                         <button type="submit" className="btn btn-primary">
                             Register
                         </button>
-                        <button type="button" className="btn btn-secondary">
+                        <button type="button" className="btn btn-secondary" onClick={handleClear}>
                             Clear
                         </button>
                     </div>
