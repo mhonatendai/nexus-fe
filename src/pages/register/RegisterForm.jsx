@@ -12,10 +12,19 @@ const RegisterForm = () => {
     const [lastName, setLastName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [middleName, setMiddleName] = useState('');
+    const [idNumber, setIdNumber] = useState('');
+    const [addressOne, setAddressOne] = useState('');
+    const [addressTwo, setAddressTwo] = useState('');
+    const [city, setCity] = useState('');
+    const [gender, setGender] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [maritalStatus, setMaritalStatus] = useState('');
+    const [nextOfKeen, setNextOfKeen] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('');
+    const genders = ['Male', 'Female'];
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -41,6 +50,14 @@ const RegisterForm = () => {
         setPassword('');
         setPassword('');
         setPhoneNumber('');
+        setIdNumber('');
+        setAddressOne('');
+        setAddressTwo('');
+        setCity('');
+        setDateOfBirth('');
+        setMaritalStatus('');
+        setNextOfKeen('');
+        setGender('');
     };
 
 
@@ -83,6 +100,33 @@ const RegisterForm = () => {
                             onChange={(e) => setLastName(e.target.value)}
                             required
                         />
+                    </div>
+                    <div className="side-by-side-input-container">
+                        <div className="input-box">
+                            <select
+                                id="gender"
+                                className="form-control custom-select"
+                                value={gender}
+                                onChange={(e) => setGender(e.target.value)}
+                                required
+                            >
+                                <option value="">Select Gender</option>
+                                {genders.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="date"
+                                className="form-control"
+                                placeholder="Date of Birth"
+                                value={dateOfBirth}
+                                onChange={(e) => setDateOfBirth(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <div className="side-by-side-input-container">
                         <div className="input-box">
