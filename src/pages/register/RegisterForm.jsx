@@ -52,7 +52,7 @@ const RegisterForm = () => {
             ) :
                 (<form onSubmit={handleSubmit}>
                     <h3>Welcome to Imperial Technologies</h3>
-                    <div className="side-by-side-container">
+                    <div className="side-by-side-input-container">
                         <div className="input-box">
                             <input
                                 type="text"
@@ -84,25 +84,27 @@ const RegisterForm = () => {
                             required
                         />
                     </div>
-                    <div className="input-box">
-                        <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Enter email"
-                            value={emailAddress}
-                            onChange={(e) => setEmailAddress(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="input-box">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter phone number"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            required
-                        />
+                    <div className="side-by-side-input-container">
+                        <div className="input-box">
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter email"
+                                value={emailAddress}
+                                onChange={(e) => setEmailAddress(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter phone number"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="input-box">
                         <input

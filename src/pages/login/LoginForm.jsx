@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import './LoginForm.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
@@ -7,54 +7,56 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        try {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-          const response = await axios.post('http://localhost:8097/employee/login', {
-            username: username,
-            password: password
-          });
-    
-          console.log(response.data);
-        } catch (error) {
-          console.error('Error submitting form:', error);
-        }
-      };
+    try {
 
-    return (
-        <div className='wrapper'>
-            <form onSubmit={handleSubmit}>
-                <h1>Sign in</h1>
-                <div className="input-box">
+      const response = await axios.post('http://localhost:8097/employee/login', {
+        username: username,
+        password: password
+      });
 
-                    <input
-                     type="text" placeholder='Username' required
-                     value={username} onChange={(e) => setUsername(e.target.value)}
-                     />
-                    <FaUser className="icon"/>
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
 
-                </div>
-                <div className="input-box">
-                    
-                    <input
-                    type="password" placeholder='Password' required
-                    value={password} onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <FaLock className="icon"/>
+  return (
+    <div className='wrapper'>
+      <form onSubmit={handleSubmit}>
+        <h1>Sign in</h1>
+        <div className="input-box">
 
-                </div>
-                <button type="submit">Login</button>
-                <div className="register-link">
-                    <p>Joining? <Link to="/register">Register here</Link></p>
-                </div>
-            </form>
+          <input
+            type="text" placeholder='Username' required
+            value={username} onChange={(e) => setUsername(e.target.value)}
+          />
+          <FaUser className="icon" />
+
         </div>
-    )
+        <div className="input-box">
+
+          <input
+            type="password" placeholder='Password' required
+            value={password} onChange={(e) => setPassword(e.target.value)}
+          />
+          <FaLock className="icon" />
+
+        </div>
+        <div className="login-grid">
+          <button type="submit">Login</button>
+        </div>
+        <div className="register-link">
+          <p>Joining? <Link to="/register">Register here</Link></p>
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default LoginForm
