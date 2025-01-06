@@ -55,6 +55,7 @@ const RegisterForm = () => {
         setMiddleName('');
         setPassword('');
         setRepeatedPassword('');
+        setIdDocument('');
         setPhoneNumber('');
         setIdNumber('');
         setIdType('');
@@ -217,6 +218,38 @@ const RegisterForm = () => {
                             <input
                                 type="text"
                                 className="form-control"
+                                placeholder="Address One"
+                                value={addressOne}
+                                onChange={(e) => setAddressOne(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Address Two"
+                                value={addressTwo}
+                                onChange={(e) => setAddressTwo(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="City"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="side-by-side-input-container">
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
                                 placeholder="Emergency Person"
                                 value={emergencyPerson}
                                 onChange={(e) => setEmergencyPerson(e.target.value)}
@@ -266,7 +299,7 @@ const RegisterForm = () => {
                         </button>
                     </div>
                     <div className="login-grid">
-                            <p>Not new ?<Link to="/login">Log in</Link></p>
+                        <p>Not new ?<Link to="/login">Log in</Link></p>
                     </div>
                 </form>
                 )}
