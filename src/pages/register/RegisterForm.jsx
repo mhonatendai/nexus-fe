@@ -8,19 +8,22 @@ import RegistrationSuccess from './RegistrationSuccess';
 const RegisterForm = () => {
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
+    const [repeatedPassword, setRepeatedPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [idNumber, setIdNumber] = useState('');
     const [idType, setIdType] = useState('');
+    const [idDocument, setIdDocument] = useState('');
     const [addressOne, setAddressOne] = useState('');
     const [addressTwo, setAddressTwo] = useState('');
     const [city, setCity] = useState('');
     const [gender, setGender] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState('');
     const [maritalStatus, setMaritalStatus] = useState('');
-    const [nextOfKeen, setNextOfKeen] = useState('');
+    const [emergencyPerson, setEmergencyPerson] = useState('');
+    const [emergencyPersonContact, setEmergencyPersonContact] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [response, setResponse] = useState(null);
@@ -51,7 +54,7 @@ const RegisterForm = () => {
         setIsRegistered(false);
         setMiddleName('');
         setPassword('');
-        setPassword('');
+        setRepeatedPassword('');
         setPhoneNumber('');
         setIdNumber('');
         setIdType('');
@@ -60,8 +63,10 @@ const RegisterForm = () => {
         setCity('');
         setDateOfBirth('');
         setMaritalStatus('');
-        setNextOfKeen('');
         setGender('');
+        setIdDocument('');
+        setEmergencyPerson('');
+        setEmergencyPersonContact('');
     };
 
 
@@ -196,6 +201,38 @@ const RegisterForm = () => {
                                 required
                             />
                         </div>
+                        <div className="input-box">
+                            <input
+                                type="file"
+                                className="form-control"
+                                placeholder="Upload ID document"
+                                value={idDocument}
+                                onChange={(e) => setIdDocument(e.target.value)}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="side-by-side-input-container">
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Emergency Person"
+                                value={emergencyPerson}
+                                onChange={(e) => setEmergencyPerson(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Emergency Person Contact"
+                                value={emergencyPersonContact}
+                                onChange={(e) => setEmergencyPersonContact(e.target.value)}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="side-by-side-input-container">
                         <div className="input-box">
@@ -213,8 +250,9 @@ const RegisterForm = () => {
                                 type="password"
                                 className="form-control"
                                 placeholder="Repeat password"
-                                value={password}
                                 required
+                                value={repeatedPassword}
+                                onChange={(e) => setRepeatedPassword(e.target.value)}
                             />
                         </div>
                     </div>
@@ -228,9 +266,7 @@ const RegisterForm = () => {
                         </button>
                     </div>
                     <div className="login-grid">
-                        <button className="btn btn-primary">
                             <p>Not new ?<Link to="/login">Log in</Link></p>
-                        </button>
                     </div>
                 </form>
                 )}
