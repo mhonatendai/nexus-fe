@@ -4,10 +4,20 @@
     margin-top: 2rem;
 }
 
-.side-by-side-input-container{
+.side-by-side-input-container {
     display: flex;
     gap: 1rem;
 }
+
+.side-by-side-input-container {
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 768px) {
+    .side-by-side-input-container {
+      flex-wrap: nowrap;
+    }
+  }
 
 .custom-select {
     border: 1px solid #ced4da;

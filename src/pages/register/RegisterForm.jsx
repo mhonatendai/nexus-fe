@@ -13,6 +13,7 @@ const RegisterForm = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [idNumber, setIdNumber] = useState('');
+    const [idType, setIdType] = useState('');
     const [addressOne, setAddressOne] = useState('');
     const [addressTwo, setAddressTwo] = useState('');
     const [city, setCity] = useState('');
@@ -25,6 +26,8 @@ const RegisterForm = () => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('');
     const genders = ['Male', 'Female'];
+    const maritalStatuses = ['Married', 'Single', 'Separated'];
+    const idTypes = ['Passport', 'National ID'];
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -51,6 +54,7 @@ const RegisterForm = () => {
         setPassword('');
         setPhoneNumber('');
         setIdNumber('');
+        setIdType('');
         setAddressOne('');
         setAddressTwo('');
         setCity('');
@@ -89,17 +93,16 @@ const RegisterForm = () => {
                                 onChange={(e) => setMiddleName(e.target.value)}
                             />
                         </div>
-                    </div>
-
-                    <div className="input-box">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Last name"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            required
-                        />
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Last name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="side-by-side-input-container">
                         <div className="input-box">
@@ -112,6 +115,22 @@ const RegisterForm = () => {
                             >
                                 <option value="">Select Gender</option>
                                 {genders.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="input-box">
+                            <select
+                                id="maritalStatus"
+                                className="form-control custom-select"
+                                value={maritalStatus}
+                                onChange={(e) => setMaritalStatus(e.target.value)}
+                                required
+                            >
+                                <option value="">Marital Status</option>
+                                {maritalStatuses.map((option) => (
                                     <option key={option} value={option}>
                                         {option}
                                     </option>
@@ -150,16 +169,56 @@ const RegisterForm = () => {
                             />
                         </div>
                     </div>
-                    <div className="input-box">
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Enter password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                    <div className="side-by-side-input-container">
+                        <div className="input-box">
+                            <select
+                                id="idType"
+                                className="form-control custom-select"
+                                value={idType}
+                                onChange={(e) => setIdType(e.target.value)}
+                                required
+                            >
+                                <option value="">ID Type</option>
+                                {idTypes.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter ID number"
+                                value={idNumber}
+                                onChange={(e) => setIdNumber(e.target.value)}
+                                required
+                            />
+                        </div>
                     </div>
+                    <div className="side-by-side-input-container">
+                        <div className="input-box">
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Repeat password"
+                                value={password}
+                                required
+                            />
+                        </div>
+                    </div>
+
                     <div className="side-by-side-container">
                         <button type="submit" className="btn btn-primary">
                             Register
